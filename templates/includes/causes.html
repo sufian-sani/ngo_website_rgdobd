@@ -1,0 +1,48 @@
+{% load static %}
+{% load custom_filters %}
+<!--Causes One Start-->
+<section class="causes-one">
+    <div class="container">
+        <div class="section-title text-center">
+            <h2 class="section-title__title">Find the popular cause <br> and donate them</h2>
+        </div>
+        <div class="row">
+            <!--Causes One Single Start-->
+            {% for donate in donate_all %}
+            <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                <div class="causes-one__single">
+                    <div class="causes-one__img">
+                        <img src="/media/{{donate.feature_image}}" alt="">
+                        <div class="causes-one__cat">
+                            <p>{{donate.criteria}}</p>
+                        </div>
+                    </div>
+                    <div class="causes-one__content">
+                        <h3 class="causes-one__title"><a href="{% url 'donatesection' slug=donate.slug %}">{{donate.title}}</a>
+                        </h3>
+                        <p class="causes-one__text">{{donate.description|truncatechars_html:100|safe}}</p>
+                        {% if donate.goal_show %}
+                        <div class="causes-one__progress">
+                            <div class="causes-one__progress-shape"
+                                style="background-image: url({% static 'images/shapes/causes-one-progress-shape-1.png' %});">
+                            </div>
+                            <div class="bar">
+                                <div class="bar-inner count-bar" data-percent="36%">
+                                    <div class="count-text">36%</div>
+                                </div>
+                            </div>
+                            <div class="causes-one__goals">
+                                <p><span>${{donate.raised}}</span> Raised</p>
+                                <p><span>${{donate.goal}}</span> Goal</p>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <!--Causes One Single End-->
+        </div>
+    </div>
+</section>
+<!--Causes One End-->

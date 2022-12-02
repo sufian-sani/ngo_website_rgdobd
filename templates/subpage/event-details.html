@@ -1,0 +1,100 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %})">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li class="active">Event details</li>
+                    </ul>
+                    <h2>Event details</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Event Details Start-->
+        <section class="event-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="event-details__left">
+                            <div class="event-details__top">
+                                <div class="event-details__date">
+                                    <p>{{events.date}}</p>
+                                </div>
+                                <h3 class="event-details__title">{{events.title}}</h3>
+                                <div class="event-details__text-1">
+                                    {{events.details|safe}}
+                                </div>
+                            </div>
+                            <div class="event-details__img-box">
+                                <div class="row">
+                                    {% for eventphoto in events_photo %}
+                                    <div class="col-xl-6">
+                                        <div class="event-details__img-single">
+                                            <img src="/media/{{eventphoto.images}}" alt="">
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div class="event-details__bottom">
+                                <div class="event-details__text-4">
+                                    {{events.details_optional|safe}}
+                                </div>
+                                <div class="event-details__btn-box">
+                                    <a href="{% url 'eventregistration' slug=events.slug %}" class="thm-btn event-details__btn">Register
+                                        yourself</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="event-details__right">
+                            <div class="event-details__info">
+                                <ul class="list-unstyled event-details__info-list">
+                                    <li>
+                                        <span>Time:</span>
+                                        <p>{{events.start_time}} to {{events.end_time}}</p>
+                                    </li>
+                                    <li>
+                                        <span>Date:</span>
+                                        <p>{{events.date}}</p>
+                                    </li>
+                                    <li>
+                                        <span>Category:</span>
+                                        <p>{{events.category}}</p>
+                                    </li>
+                                    <li>
+                                        <span>Location:</span>
+                                        <p>{{events.location}}</p>
+                                    </li>
+                                </ul>
+                                <div class="event-details__social">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="event-details__map">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4562.753041141002!2d-118.80123790098536!3d34.152323469614075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80e82469c2162619%3A0xba03efb7998eef6d!2sCostco+Wholesale!5e0!3m2!1sbn!2sbd!4v1562518641290!5m2!1sbn!2sbd"
+                                    class="event-details-map__one" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Event Details End-->
+
+{% endblock body_block %}

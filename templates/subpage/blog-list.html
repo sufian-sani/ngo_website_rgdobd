@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %})">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li class="active">Blog</li>
+                    </ul>
+                    <h2>Latest Blog</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--News Page Start-->
+        <section class="news-page">
+            <div class="container">
+                <div class="row">
+                    <!--News One Single Start-->
+                    {% for blog in blogs %}
+                    <div class="col-xl-4 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="news-one__single">
+                            <div class="news-one__img">
+                                <img src="/media/{{blog.image}}" alt="">
+                            </div>
+                            <div class="news-one__content-box">
+                                <div class="news-one__content-inner">
+                                    <div class="news-one__content">
+                                        <ul class="list-unstyled news-one__meta">
+                                            <li><a href="news-details.html"><i class="fas fa-comments"></i> 2
+                                                    Comments</a>
+                                            </li>
+                                        </ul>
+                                        <h3 class="news-one__title"><a href="{% url 'blogdetails' pk=blog.id %}">{{blog.title}}</a></h3>
+                                    </div>
+                                    <div class="news-one__bottom">
+                                        <div class="news-one__read-more">
+                                            <a href="{% url 'blogdetails' pk=blog.id %}"> <span class="icon-right-arrow"></span> Read
+                                                More</a>
+                                        </div>
+                                        <div class="news-one__share">
+                                            <a href="#"><i class="fas fa-share-alt"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="news-one__social-box">
+                                        <ul class="list-unstyled news-one__social">
+                                            <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fab fa-dribbble"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="news-one__date">
+                                    <p>{{blog.created}}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!--News One Single End-->
+                </div>
+            </div>
+        </section>
+        <!--News Page End-->
+
+{% endblock body_block %}

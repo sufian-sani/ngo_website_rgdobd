@@ -1,0 +1,28 @@
+{% load static %}
+<!--Gallery One Start-->
+<section class="gallery-one">
+    <div class="gallery-one__top">
+        <h3 class="gallery-one__top-title">Our photo gallery</h3>
+    </div>
+    <div class="gallery-one__bottom" style="position: relative;">
+        <div class="gallery-one__container">
+            <ul class="list-unstyled gallery-one__list">
+                {% for i in gallery %}
+                <li class="gallery-one__single wow fadeInUp" data-wow-delay="100ms">
+                    <div class="gallery-one__img">
+                        <img src="/media/{{i.image}}" alt="" style="width:256px;height:266px">
+                        <a href="/media/{{i.image}}" class="img-popup"></a>
+                        <div class="gallery-one__content">
+                            <!-- /.img-popup -->
+                            <p class="gallery-one__sub-title">{{i.sub_title}}</p>
+                            <h5 class="gallery-one__title"><a href="">{{i.criteria}}</a></h5>
+                        </div>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    <a href="{% url 'gallerylist' %}" class="btn btn-outline-warning seemore_button" style="position:absolute;">see more</a>
+</section>
+<!--Gallery One End-->

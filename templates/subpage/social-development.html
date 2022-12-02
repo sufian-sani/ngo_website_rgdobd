@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %})">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li class="active">Social Development</li>
+                    </ul>
+                    <h2>Social Development</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Gallery Page Start-->
+        <section class="gallery-page">
+            <div class="container">
+                <div class="row">
+                    <!--Gallery Page Single Start-->
+                    {% for social_development in social_development_all %}
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="gallery-page__single">
+                            <div class="gallery-page__img">
+                                <img src="/media/{{social_development.feature_image}}" alt="" style="width:370px;height:350px;">
+                                <a href="/media/{{social_development.feature_image}}" class="img-popup"></a>
+                                <!-- /.img-popup -->
+                                <div class="gallery-page__content">
+                                    <p class="gallery-page__sub-title">{{social_development.criteria}}</p>
+                                    <h5 class="gallery-page__title"><a href="">{{social_development.title}}</a></h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <!--Gallery Page Single End-->
+                </div>
+            </div>
+        </section>
+        <!--Gallery Page End-->
+
+        
+
+{% endblock body_block %}

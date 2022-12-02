@@ -1,0 +1,44 @@
+{% load static %}
+<!--FAQ One Start-->
+<section class="faq-one">
+    <div class="faq-one-shape-1" style="background-image: url({% static 'images/shapes/faq-one-shape-1.png' %});"></div>
+    <div class="faq-one-bg" style="background-image: url({% static 'images/backgrounds/faq-one-bg.png' %});"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6">
+                <div class="faq-one__left">
+                    <div class="section-title text-left">
+                        <span class="section-title__tagline">Learn How to Get Help</span>
+                        <h2 class="section-title__title">People are frequently asking some questions from us
+                        </h2>
+                    </div>
+                    <p class="faq-one__text-1">Proactively procrastinate cross-platform results via extensive
+                        ideas distinctively underwhelm enterprise. Compellingly plagiarize value-added sources
+                        with inexpensive schemas.</p>
+                    <a href="" class="thm-btn faq-one__btn">Read More</a>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6">
+                <div class="faq-one__right">
+                    <div class="accrodion-grp" data-grp-name="faq-one-accrodion">
+                        {% for faqs in faq %}
+                        <div class="accrodion {% if forloop.counter == 1 %} active {% endif %}">
+                            <div class="accrodion-title">
+                                <h4>{{faqs.question}}</h4>
+                            </div>
+                            <div class="accrodion-content">
+                                <div class="inner">
+                                    <p>
+                                        {{faqs.description}}
+                                    </p>
+                                </div><!-- /.inner -->
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--FAQ One End-->

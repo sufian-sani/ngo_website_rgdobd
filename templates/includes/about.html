@@ -1,0 +1,91 @@
+{% load static %}
+<!--About One Start-->
+<section class="about-one">
+    <div class="about-one__shape-box-1">
+        <div class="about-one__shape-1"
+            style="background-image: url({% static 'images/shapes/about-one-shape-1.png' %});"></div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6">
+                <div class="about-one__left">
+                    <div class="about-one__img-box wow slideInLeft" data-wow-delay="100ms"
+                        data-wow-duration="2500ms">
+                        <div class="about-one__img">
+                            <img src="/media/{{aboutus.image}}" alt="">
+                        </div>
+                        <div class="about-one__img-border"></div>
+                        <div class="about-one__curved-circle-box">
+                            <div class="curved-circle">
+                                <span class="curved-circle--item">
+                                    25 YEARS EXPERIENCE OXPINS CHARITY CENTER
+                                </span>
+                            </div><!-- /.curved-circle -->
+                            <div class="about-one__curved-circle-icon">
+                                <img src="{% static 'images/icon/curved-circle-icon.png' %}" alt="">
+                            </div>
+                        </div>
+                        <div class="about-one__shape-2 zoom-fade">
+                            <img src="{% static 'images/shapes/about-one-shape-2.png' %}" alt="">
+                        </div>
+                        <div class="about-one__shape-3 float-bob-y">
+                            <img src="{% static 'images/shapes/about-one-shape-3.png' %}" alt="">
+                        </div>
+                        <div class="about-one__shape-4 zoominout">
+                            <img src="{% static 'images/shapes/about-one-shape-4.png' %}" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6">
+                <div class="about-one__right">
+                    <div class="section-title text-left">
+                        <h2 class="section-title__title">{{aboutus.title}}</h2>
+                    </div>
+                    <div class="about-one__text">
+                        {{aboutus.description}}
+                    </div>
+                    <br>
+                    <ul class="list-unstyled about-one__points">
+                        <li>
+                            <div class="icon">
+                                <span class=""><i class="fas fa-eye"></i></span>
+                                {% comment %} <span class="icon-volunteer"></span> {% endcomment %}
+                            </div>
+                            <div class="text">
+                                <h5><a href="{% url 'glance' %}">At a Glance</a></h5>
+                            </div>
+                        </li>
+                        <li style="margin-left:70px;">
+                            <div class="icon">
+                                <span class=""><i class="fa fa-info-circle"></i></span>
+                            </div>
+                            <div class="text">
+                                <h5><a href="{% url 'about' %}">About RHDO</a></h5>
+                            </div>
+                        </li>
+                    </ul>
+                    <ul class="list-unstyled about-one__points">
+                        <li>
+                            <div class="icon">
+                                <span class=""><i class="fa fa-network-wired"></i></span>
+                            </div>
+                            <div class="text">
+                                <h5><a href="{% url 'partnersnetworks' %}">Partners & Networks</a></h5>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="icon">
+                                <span class=""><i class="fa fa-award"></i></span>
+                            </div>
+                            <div class="text">
+                                <h5><a href="{% url 'awardsrecognation' %}">Awards & Recognation</a></h5>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--About One End-->

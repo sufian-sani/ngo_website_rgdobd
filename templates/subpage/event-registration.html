@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %})">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li class="active">Event Registation</li>
+                    </ul>
+                    <h2>Event Registation From</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Become Volunteer Page Start-->
+        <section class="become-volunteer-page">
+            <div class="container">
+                <div class="section-title text-center">
+                    <span class="section-title__tagline">Register yourself with us</span>
+                    <h2 class="section-title__title">Let’s attend our event to <br> become a Guest</h2>
+                    <h4 class="section-title__title">Event Name: <span style="color:#B0B75B;"> {{events.title}}</span></h4>
+                </div>
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="become-volunteer-page__left">
+                            <div class="become-volunteer-page__img">
+                                <img src="assets/images/team/become-volunteer-img-1.jpg" alt="">
+                            </div>
+                            <div class="become-volunteer-page__content">
+                                <h3 class="become-volunteer-page__title">Requirements</h3>
+                                <p class="become-volunteer-page__text">Aliquam hendrerit a augue insu image pellentes
+                                    que id erat quis sollicitud null mattis Ipsum is simply dummy typesetting industry.
+                                    Alienum phaedrum torquatos nec eu.</p>
+                                <ul class="list-unstyled become-volunteer__points">
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>Making this first true generator simply text</p>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="icon">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        <div class="text">
+                                            <p>Lorem Ipsum is not simply free text</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="become-volunteer__call">
+                                <div class="become-volunteer__call-icon">
+                                    <span class="icon-chat"></span>
+                                </div>
+                                <div class="become-volunteer__call-content">
+                                    <span>Call Anytime</span>
+                                    <p><a href="tel:980009630">+98 (000) - 9630</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6 col-lg-6">
+                        <div class="become-volunteer-page__right">
+                            <form class="become-volunteer-page__form" method="POST" action="" id="myForm" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" id="eventId" name="eventid" value={{events.id}}>
+                                <input type="hidden" id="eventName" name="eventname" value="{{events.title}}">
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="become-volunteer-page__input">
+                                            <input type="text" placeholder="Your Name" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="become-volunteer-page__input">
+                                            <input type="email" placeholder="Email Address" name="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="become-volunteer-page__input">
+                                            <input type="text" placeholder="Phone Number" name="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="become-volunteer-page__input">
+                                            <label for="registationtypeId">Choose a Registation Type: </label>
+                                            <select name="registationtype" id="registationtypeId">
+                                                <option value="general">General</option>
+                                                <option value="volunteer">Volunteer</option>
+                                                <option value="donear">Donear</option>
+                                              </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        <div class="become-volunteer-page__btn-box">
+                                            <button type="submit" class="thm-btn become-volunteer-page__btn" onclick="submitForm()">Submit</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Become Volunteer Page End-->
+
+    <script>
+        function submitForm() {
+            // Get the first form with the name
+            // Usually the form name is not repeated
+            // but duplicate names are possible in HTML
+            // Therefore to work around the issue, enforce the correct index
+            var frm = document.getElementsByName('myForm')[0];
+            frm.reset();  // Reset all form data
+            return false; // Prevent page refresh
+         }
+        var randLetter = Math.floor(Math.random() * 10);
+        var uniqid = randLetter + Date.now();
+        document.getElementById("volunteerid").value = uniqid;
+    
+    </script>
+
+{% endblock body_block %}

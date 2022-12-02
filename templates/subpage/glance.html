@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %})">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li class="active">Event details</li>
+                    </ul>
+                    <h2>Event details</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--Event Details Start-->
+        <section class="event-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-9 col-lg-9" style="margin: 0 auto;">
+                        <div class="event-details__left">
+                            <div class="event-details__top">
+                                <h3 class="event-details__title">{{glance_details.title}}</h3>
+                                <div class="event-details__text-1">
+                                    {{glance_details.description|safe}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--Event Details End-->
+
+{% endblock body_block %}

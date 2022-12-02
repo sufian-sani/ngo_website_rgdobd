@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body_block %}
+
+        <!--Page Header Start-->
+        <section class="page-header">
+            <div class="page-header-bg" style="background-image: url({% static 'images/backgrounds/page-header-bg.jpg' %})">
+            </div>
+            <div class="container">
+                <div class="page-header__inner">
+                    <ul class="thm-breadcrumb list-unstyled">
+                        <li><a href="index.html">Home</a></li>
+                        <li><span>/</span></li>
+                        <li class="active">News details </li>
+                    </ul>
+                    <h2>News details</h2>
+                </div>
+            </div>
+        </section>
+        <!--Page Header End-->
+
+        <!--News details Start-->
+        <section class="news-details">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-7">
+                        <div class="news-details__left">
+                            <div class="news-details__img_blog news-details__img">
+                                <img src="/media/{{blogs.image}}" alt="" style="width:100%;">
+                                <div class="news-details__date">
+                                    <p>{{blogs.created}}</p>
+                                </div>
+                            </div>
+                            <div class="news-details__content">
+                                <ul class="list-unstyled news-details__meta">
+                                    <li><a href="news-details.html"><i class="fas fa-comments"></i> 2
+                                            Comments</a>
+                                    </li>
+                                </ul>
+                                <h3 class="news-details__title">{{blogs.title}}</h3>
+                                <p class="news-details__text-1">
+                                    {{blogs.description|safe}}
+                                </p>
+                            </div>
+                            <div class="news-details__bottom">
+                                <div class="news-details__social-list">
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                            <div class="comment-one">
+                                <h3 class="comment-one__title">{{comment_all.count}} comments</h3>
+                                {% for comment in comment_all %}
+                                <div class="comment-one__single">
+                                    <div class="comment-one__image">
+                                        <img src="{% static 'images/commenter-image.jpg' %}" alt="" style="width:100%;border-radius:15%;">
+                                    </div>
+                                    <div class="comment-one__content">
+                                        <h3>{{comment.name}}</h3>
+                                        <p>
+                                            {{comment.comment}}
+                                        </p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="comment-form">
+                                <h3 class="comment-form__title">Leave a comment</h3>
+                                <form action="" class="comment-one__form contact-form-validated"
+                                    novalidate="novalidate" method="POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" id="" name="blogsId" value={{blogs.id}}>
+                                    <input type="hidden" id="" name="blog" value={{blogs}}>
+                                    <div class="row">
+                                        <div class="col-xl-6">
+                                            <div class="comment-form__input-box">
+                                                <input type="text" placeholder="Your name" name="name">
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-6">
+                                            <div class="comment-form__input-box">
+                                                <input type="email" placeholder="Email address" name="email">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xl-12">
+                                            <div class="comment-form__input-box text-message-box">
+                                                <textarea name="message" placeholder="Write a message"></textarea>
+                                            </div>
+                                            <div class="comment-form__btn-box">
+                                                <button type="submit" class="thm-btn comment-form__btn">Submit
+                                                    comment</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-5">
+                        <div class="sidebar">
+                            <div class="sidebar__single sidebar__search">
+                                <form action="#" class="sidebar__search-form">
+                                    <input type="search" placeholder="Search here">
+                                    <button type="submit"><i class="icon-magnifying-glass"></i></button>
+                                </form>
+                            </div>
+                            <div class="sidebar__single sidebar__post">
+                                <div class="sidebar-shape-1"
+                                    style="background-image: url(assets/images/shapes/sidebar-shape-1.png);"></div>
+                                <h3 class="sidebar__title">Latest posts</h3>
+                                <ul class="sidebar__post-list list-unstyled">
+                                    {% for related_blog in related_blog_list %}
+                                    <li>
+                                        <div class="sidebar__post-image">
+                                            <img src="/media/{{related_blog.image}}" alt="">
+                                        </div>
+                                        <div class="sidebar__post-content">
+                                            <h3>
+                                                <a href="">{{related_blog.title}}</a>
+                                            </h3>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                            <div class="sidebar__single sidebar__category">
+                                <div class="sidebar-shape-1"
+                                    style="background-image: url(assets/images/shapes/sidebar-shape-1.png);"></div>
+                                <h3 class="sidebar__title">Categories</h3>
+                                <ul class="sidebar__category-list list-unstyled">
+                                    {% for categorie in categories %}
+                                    <li><a href="">{{categorie.categories}} <span class="icon-right-arrow"></span></a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--News details End-->
+
+{% endblock body_block %}
